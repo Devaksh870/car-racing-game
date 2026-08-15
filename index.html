@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Racing Game</title>
+    <link rel="stylesheet" href="style.css">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#555555">
+<meta name="mobile-web-app-capable" content="yes"></head>
+
+<body>
+
+    <!-- Start Screen -->
+    <div id="startScreen">
+        <h1>🏎️ Car Racing Game</h1>
+        <button id="startBtn">Start Game</button>
+    </div>
+
+    <!-- HUD -->
+    <div id="hud">
+        <span>🏆 Score: <span id="score">0</span></span>
+        <span>📈 Level: <span id="level">1</span></span>
+        <span>❤️ Lives: <span id="lives">3</span></span>
+        <span>🪙 Coins: <span id="coins">0</span></span>
+    </div>
+
+    <!-- Game Area -->
+    <div id="game">
+
+        <!-- Road Lines -->
+        <div id="line1" class="line"></div>
+        <div id="line2" class="line"></div>
+        <div id="line3" class="line"></div>
+        <div id="line4" class="line"></div>
+
+        <!-- Player -->
+        <div id="player" class="car"></div>
+
+        <!-- Enemy Cars -->
+        <div id="enemy1" class="car enemy"></div>
+        <div id="enemy2" class="car enemy"></div>
+
+        <!-- Coin -->
+        <div id="coin">🪙</div>
+
+    </div>
+
+    <!-- Left / Right Controls -->
+    <div class="controls">
+        <button id="leftBtn">⬅️</button>
+        <button id="rightBtn">➡️</button>
+    </div>
+
+    <!-- Pause / Resume -->
+    <div class="buttons">
+        <button id="pauseBtn">⏸ Pause</button>
+        <button id="resumeBtn">▶ Resume</button>
+    </div>
+
+    <!-- Game Over -->
+    <div id="gameOver">
+        <h2>💥 Game Over</h2>
+        <p>Your Score: <span id="finalScore">0</span></p>
+        <p>Your Coins: <span id="finalCoins">0</span></p>
+        <button id="restartBtn">🔄 Play Again</button>
+    </div>
+
+    <script src="script.js"></script>
+  <script>
+if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+        navigator.serviceWorker.register("./sw.js")
+            .then(() => {
+                console.log("Service Worker registered successfully.");
+            })
+            .catch(error => {
+                console.error("Service Worker registration failed:", error);
+            });
+    });
+}
+  </script>
+
+</body>
+</html>
